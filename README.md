@@ -14,11 +14,15 @@ Thus, our objectives include:
   3. Using the least amount of resources possible. We are talking about limitations of the computer that is being used. Basis recommendations from leaders in the research space, the computers that we are using will be slightly higher that the minimum system requirements but a lot lower than the recommended systems. Please look at the section on System Configuration for more details.
  
 ## 2. Learnings so far ...
+On the offset, let me remind you that we have three months to complete this project. 
+In terms of data, our understanding is the more we have, the more accurate our prediction will be. In keeping with our objective, 
 
 ## 3. Requirements
 ## 4. System configuration
 ## 5. Basic code files
 ## 6. Conclusion
+## 7. What changes would I make?
+  1. Find a way to compare images and get a score of the similarity between them. This way we remove duplicates from our train and test sets.
 
 ## Citations, Credits, Sources, and References
 
