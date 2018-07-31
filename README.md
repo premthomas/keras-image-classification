@@ -18,21 +18,26 @@ Our target accuracy will be anything over 90%.
 ## 2. Learnings so far ...
 On the offset, let me remind you that we have three months to complete this project. 
 
-There are two kinds of Classifiers that exist. One is a Binary classifier (like Dog Vs. Cat) and the multi-class classifier. To understand if our algorithm works correctly, we will have to use 3 or more classes. We will start with three for our understanding and check to see how we cn increase the number of classes. The rules of Flickr27 state that each picture will contain only one of the 27 logos which have been categorised. Hence our code will evaluate the whole image at once and will categorise it as one of the three classes that we choose. We currently do not intend on training a background class which acts as a fail-safe. (should the logo detected not be in one of the three classes we have trained it for.
+There are two kinds of Classifiers that exist. One is a Binary classifier (like Dog Vs. Cat) and the multi-class classifier. To understand if our algorithm works correctly, we will have to use 3 or more classes. We will start with three for our understanding and check to see how we cn increase the number of classes. The rules of Flickr27 state that each picture will contain only one of the 27 logos which have been categorised. Hence our code will evaluate the whole image at once and will categorise it as one of the three classes that we choose. We currently do not intend on training a background class which acts as a fail-safe. (should the logo detected not be in one of the three classes we have trained it for. Thinking about it in the most basic way, 3 classes would mean that if the model was to take a random guess, the prediction would be right 33.3% of the time. Any increase from here suggests that the model is learning and as the number gets higher, it would be difficult to improve on it. 
 
-In terms of data, our understanding is the more we have, the more accurate our prediction will be. In keeping with our objective, we will be using the Flickr27 dataset. With regards to the algorithm that we intend on using, we will be testing CNNs (Convolutional Neural Networks). Our intention is to test smaller custom architectures and then move to larger ones with the understanding being that smaller networks would take lesser time to train. 
+In terms of data, our understanding is the more we have, the more accurate our prediction will be. In keeping with our objective, we will be using the Flickr27 dataset. With regards to the algorithm that we intend on using, we will be testing CNNs (Convolutional Neural Networks). Our intention is to test smaller custom architectures and then move to larger ones with the understanding being that smaller networks would take lesser time to train.
+
+Getting the GPU to work was one of our bigger hurdles. Based on the augmentation and the number of classes, we ran training scenarios for 20 epochs which took us over 12 hours. Only after going through a large number of blog posts, did we finally get our GPU's working and it did give us a minimum of 10 time the improvement. However, one disadvantage is that, the memory in the GPU being small did not allow us to use more classes. 
 
 ### How small is too small?
-To answer this we know that 25 to 30 images is just too less to train any model. The loss function immediately takes a dive for the worse and the training platueas. Sources state that we will need at least a 1000 images per class to make make a valid impact on our training and test. Augmentation is the answer to this. We augment each image with a set of rules, thereby creating similar images with some noise or change to it. As far as possible, we will have to imitate the real-world scenarios and therefore understand that certain augmentations are just out of scope.
+25 to 30 images is just too less to train any model. The loss function immediately takes a dive for the worse and the training platueas. Sources state that we will need at least a 1000 images per class to make make a valid impact on our training and test. Augmentation is the answer to this. We augment each image with a set of rules, thereby creating similar images with some noise or change to it. As far as possible, we will have to imitate the real-world scenarios and therefore understand that certain augmentations are just out of scope.
 
 ## 3. Software Requirements
 In terms of software requirements, we will be using the following
   - Python with Keras and Tensorflow
   - GPU drivers and associated installations. Please refer to the link (https://www.tensorflow.org/install/install_windows) to check if and how to install the GPU
   - Most of our programming will happen on Jupyter notebooks rather than python programs as we will require to view output on a line-by-line execution level.
-  - Higly suggested (but not mandatory) is installing Anaconda. This will help you create seperate environments in which you can execute you projects on. Should any of the libraries that we use be upgraded or changed, the failure would be contained within the environment and would not affect all the other developments that you have.
+  - Highly suggested (but not mandatory) is installing Anaconda. This will help you create seperate environments in which you can execute you projects on. Should any of the libraries that we use be upgraded or changed, the failure would be contained within the environment and would not affect all the other developments that you have.
 
-## 4. System configuration
+## 4. More about the dataset
+Flick27 is a collection of 27 classes (such as Apple, Google, McDonalds) with each class containing about 35 images. The dataset is already broken up into "train" (30 images) and "validation" (5 images) sets. When training any model, we need to have a train and test set and hence broke the train set into two sets: a train (24 images) and a test (6 images). It is best that you put all the image files into subfolders whose names represent the class to which it belongs. The validation set should not be used till you have acceptable training and test accuracies. 
+
+## 5. System configuration
 Laptop with
   - Windows 10
   - Intel Core i5 - 7200U 2.5 GHz
@@ -48,17 +53,25 @@ This is close to the minimum requirements required to do a small scale image cal
   
 I would recommend that you look at Siraj's video that was posted on June 2018. Best Laptop for Machine Learning (https://www.youtube.com/watch?v=dtFZrFKMiPI). And yes, I would highly recommend other videos on Machine learning posted by Siraj. 
   
-## 5. Basic code files
+## 6. Basic code files
 Here is a list of the code files that were used and their function.
+  - CreateModel.ipynb: Your first step is to create a model. There are two ways of creating models. You could import a model programmed in Keras directly (read this link for information on available models https://keras.io/applications/) or you could create your own model. We will be creating our own model using the InceptionV3 as our base. The reason in doing so is that most models wourk with RGB images only and not with Grey-scale. There are a few variables that you will have to change. 
+    - Number of channels the images has: 1 represents a Grey-scale image, 3 represents a RGB (or HSV) image.
+    - Number of classes: This is important as this will represent your final output layer. In this example, the value is set to 3.
+    
+  - TrainModel.ipynb: The next step is to train your model. 
+  
+  - PredictModel.ipynb: Finally, we use the trained model and predict classes for the images that we have in our validation set. 
+  
 
-## 6. Conclusion
+## 7. Conclusion
 Well, this went better than expected. With a 95% training, 95% test, and a 93% validation, this algorithm does show it is possible to create a highly accurate model with less data. 
 
 What about testing with images taken from a camera? Would it work then? The answer is no. The results were very poor. No matter how well we controlled the method of taking an image for image classification, it almost always got it wrong. 
 
 What if we put further constraints (like size) and used images from Google? While this did work better than images from real-life, it did not prove to be as accurate as that of the images that were present in Flickr27 and did not come close to the accuracies that were presented. The testing we did was small and it might be possible that the accuracies would have increased if we tested with a lot more images. 
 
-## 7. What changes would I make?
+## 8. What changes would I make?
   1. Find a way to compare images and get a score of the similarity between them. This way we remove duplicates from our train and test sets. Thus reducing the amout of time for training.
   2. Change the algorithm to use RGB images instead of Grey-scale images as most experts suggest that we will lose details that are important when converting the images from RGB to Grey-scale.
   3. Find a method of checking what is being detected in the image that is used for predtiction. This will help us understand the reasons why classification might go wrong. 
@@ -68,4 +81,4 @@ What if we put further constraints (like size) and used images from Google? Whil
 Filckr27 - Y. Kalantidis, LG. Pueyo, M. Trevisiol, R. van Zwol, Y. Avrithis. Scalable Triangulation-based Logo Recognition. In Proceedings of ACM International Conference on Multimedia Retrieval (ICMR 2011), Trento, Italy, April 2011.
 
 ## About the author  
-My name is Prem and I am currently working as a freelance consultant in SAP-ABAP and Android. I have a total of 14 years of experience and am currently attending a course in Machine Learning. My primary focus is on Image Classification using Keras and Tensorflow. The learning I do is generally task oriented. My colleagues of this project are Satyajit (The Doctor) and Vivek (The Visonary). While Satya is will be following a more methodical approach to understanding the technical aspects of the code, Vivek will be working on the business front of this application and visualisation of the data that is being collected.
+My name is Prem and I am currently working as a freelance consultant in SAP-ABAP and Android. I have a total of 14 years of experience and am currently attending a course in Machine Learning. My primary focus is on Image Classification using Keras and Tensorflow. The learning I do is generally task oriented. My colleagues of this project are Satyajit (The Doctor) and Vivek (The Visonary). While Satya is will be following a more methodical approach to understanding the technical aspects of the code, Vivek will be working on the business front of this application and visualisation of the data that is being collected (and generated).
