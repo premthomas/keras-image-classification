@@ -55,11 +55,11 @@ I would recommend that you look at Siraj's video that was posted on June 2018. B
   
 ## 6. Basic code files
 Here is a list of the code files that were used and their function.
-  - CreateModel.ipynb: Your first step is to create a model. There are two ways of creating models. You could import a model programmed in Keras directly (read this link for information on available models https://keras.io/applications/) or you could create your own model. We will be creating our own model using the InceptionV3 as our base. The reason in doing so is that most models wourk with RGB images only and not with Grey-scale. There are a few variables that you will have to change. 
+  - CreateModel.ipynb: Your first step is to create a model. There are two ways of creating models. You could import a model programmed in Keras directly (read this link for information on available models https://keras.io/applications/) or you could create your own model. We will be creating our own model using InceptionV3 as our base. The reason in doing so is that most models work with RGB images only and not with Grey-scale. There are a few variables that you will have to change. 
     - Number of channels the images has: 1 represents a Grey-scale image, 3 represents a RGB (or HSV) image.
     - Number of classes: This is important as this will represent your final output layer. In this example, the value is set to 3.
     
-  - TrainModel.ipynb: The next step is to train your model. 
+  - TrainModel.ipynb: The next step is to train your model. This step could be the most time consuming process. Remember that this will depend on the system and its configuration that is available. In this example, we ran a 100 epochs, each of which took approximately 200 seconds. Notice that in the 67th epoch, we have a training accuracy of 99.97% and a validation accuracy of 98.33%. This does represent a overfitting problem but only very slightly.
   
   - PredictModel.ipynb: Finally, we use the trained model and predict classes for the images that we have in our validation set. 
   
