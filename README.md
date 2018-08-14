@@ -13,7 +13,7 @@ Thus, our objectives include:
   2. Keeping training time to a minimum. Minimum is subjective. Here, we are keeping the training time between 6-8 hours. Any model that takes longer would be difficult to use for prediction and testing of results at the end of the day.
   3. Using the least amount of resources possible. We are talking about limitations of the computer that is being used. Basis recommendations from leaders in the research space, the computers that we are using will be slightly higher that the minimum system requirements but a lot lower than the recommended systems. Please look at the section on System Configuration for more details.
 
-Our target accuracy will be anything over 90%.
+Our target (test) accuracy will be anything over 90%.
 
 ## 2. Learnings so far ...
 On the offset, let me remind you that we have three months to complete this project. 
@@ -35,7 +35,7 @@ In terms of software requirements, we will be using the following
   - Highly suggested (but not mandatory) is installing Anaconda. This will help you create seperate environments in which you can execute you projects on. Should any of the libraries that we use be upgraded or changed, the failure would be contained within the environment and would not affect all the other developments that you have.
 
 ## 4. More about the dataset
-Flick27 is a collection of 27 classes (such as Apple, Google, McDonalds) with each class containing about 35 images. The dataset is already broken up into "train" (30 images) and "validation" (5 images) sets. When training any model, we need to have a train and test set and hence broke the train set into two sets: a train (24 images) and a test (6 images). It is best that you put all the image files into subfolders whose names represent the class to which it belongs. The validation set should not be used till you have acceptable training and test accuracies. 
+Flick27 is a collection of 27 classes (such as Apple, Google, McDonalds) with each class containing about 35 images. The dataset is already broken up into "train" (30 images) and "test" (5 images) sets. When training any model, we need to have a train and validation set and hence broke the train set into two sets: a train (24 images) and a validation (6 images). It is best that you put all the image files into subfolders whose names represent the class to which it belongs. The test set should not be used till you have acceptable training and validation accuracies. 
 
 ## 5. System configuration
 Laptop with
@@ -61,13 +61,12 @@ Here is a list of the code files that were used and their function.
     
   - TrainModel.ipynb: The next step is to train your model. This step could be the most time consuming process. Remember that this will depend on the system and its configuration that is available. In this example, we ran a 100 epochs, each of which took approximately 200 seconds. Notice that in the 67th epoch, we have a training accuracy of 99.97% and a validation accuracy of 98.33%. This does represent a overfitting problem but only very slightly.
   
-  - PredictModel.ipynb: Finally, we use the trained model and predict classes for the images that we have in our validation set. 
+  - TestModel.ipynb: Finally, we use the trained model (with weights) and predict classes for the images that we have in our validation set. The results are not as good as I expected. It was 13 correct prediction out of the 15 available and translates to 86.6%.  However, this can be due to the number of images available for testing being very low.
   
-
 ## 7. Conclusion
-Well, this went better than expected. With a 95% training, 95% test, and a 93% validation, this algorithm does show it is possible to create a highly accurate model with less data. 
+With a 99.97% training, 98.33% validation, and a 86.66% test, this algorithm does show it is possible to create a highly accurate model with less data. 
 
-What about testing with images taken from a camera? Would it work then? The answer is no. The results were very poor. No matter how well we controlled the method of taking an image for image classification, it almost always got it wrong. 
+What about testing with images taken from a camera? Would it work then? The answer is no. The results were very poor. No matter how well we controlled the method of taking an image for image classification, it almost always got it wrong. The score in this case dropped to a little less than 60%. 
 
 What if we put further constraints (like size) and used images from Google? While this did work better than images from real-life, it did not prove to be as accurate as that of the images that were present in Flickr27 and did not come close to the accuracies that were presented. The testing we did was small and it might be possible that the accuracies would have increased if we tested with a lot more images. 
 
@@ -81,4 +80,4 @@ What if we put further constraints (like size) and used images from Google? Whil
 Filckr27 - Y. Kalantidis, LG. Pueyo, M. Trevisiol, R. van Zwol, Y. Avrithis. Scalable Triangulation-based Logo Recognition. In Proceedings of ACM International Conference on Multimedia Retrieval (ICMR 2011), Trento, Italy, April 2011.
 
 ## About the author  
-My name is Prem and I am currently working as a freelance consultant in SAP-ABAP and Android. I have a total of 14 years of experience and am currently attending a course in Machine Learning. My primary focus is on Image Classification using Keras and Tensorflow. The learning I do is generally task oriented. My colleagues of this project are Satyajit (The Doctor) and Vivek (The Visonary). While Satya is will be following a more methodical approach to understanding the technical aspects of the code, Vivek will be working on the business front of this application and visualisation of the data that is being collected (and generated).
+My name is Prem and I am currently working as a freelance consultant in SAP-ABAP and Android. I have a total of 14 years of experience and am currently attending a course in Machine Learning. My primary focus is on Image Classification using Keras and Tensorflow. The learning I do is generally task oriented. My colleagues of this project are Satyajit Nair and Vivek Krishnan.
