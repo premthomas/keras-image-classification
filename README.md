@@ -1,10 +1,10 @@
 # Grey-scale Image Classification using KERAS
 
 ## Disclaimer
-This is a research project submitted for credit for a course that we are currently taking. The results seen here are subjective and should not be considered as final or accurate. 
+This is a research project submitted for credit for a course that we just completed. The results seen here are subjective and should not be considered as final or accurate. 
 
 ## 1. Objective
-During the history of computers (and computing), we have seen a significant rise in computing capabilities and a proportional drop in the cost of resources (such as CPUs, and memory). Note that during this period, wants and aspirations have also transcended from when we yearned for owning a computer one day, to the present wherein we have mobile devices (often a 100 times more powerful) in our very own pockets (or perhaps just strewn about our homes?)!
+When considering the history of computers (and computing), we have seen a significant rise in computing capabilities and a proportional drop in the cost of resources (such as CPUs, and memory). Note that during this period, wants and aspirations have also transcended - from the times we yearned for owning a computer one day, to the present wherein we have mobile devices (often a 100 times more powerful) in our very own pockets (or perhaps just strewn about our homes?)!
 
 Using a similar thought process, we wish to submit that today's scenario - where more data leads to better learning, which in turn leads to accurate predictions - would soon change to a scenario where accuracy may be sacrificed for relatively quick training (learning) and deployment. In light of this, we plan on using only our laptops (see configuration below) and a fairly stable internet connection. We will deliberately be staying away from online cloud computing platforms, as students typically would not have the resources to pay for such platforms, nor sufficient time to utilize the free versions owing to their contraints on duration of usage. 
 
@@ -16,7 +16,7 @@ Thus, our objectives include:
 Our target (test) accuracy will be anything over 90%.
 
 ## 2. Learnings so far ...
-On the offset, let me remind you that we have three months to complete this project. 
+On the offset, let me remind you that we had three months to complete this project. 
 
 There are two kinds of Classifiers that exist. One is a Binary classifier (like Dog Vs. Cat) and the multi-class classifier. To understand if our algorithm works correctly, we will have to use 3 or more classes. We will start with three for our understanding and check to see how we cn increase the number of classes. The rules of Flickr27 state that each picture will contain only one of the 27 logos which have been categorised. Hence our code will evaluate the whole image at once and will categorise it as one of the three classes that we choose. We currently do not intend on training a background class which acts as a fail-safe. (should the logo detected not be in one of the three classes we have trained it for. Thinking about it in the most basic way, 3 classes would mean that if the model was to take a random guess, the prediction would be right 33.3% of the time. Any increase from here suggests that the model is learning and as the number gets higher, it would be difficult to improve on it. 
 
