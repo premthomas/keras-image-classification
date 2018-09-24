@@ -1,0 +1,15 @@
+The following are the list of Python Libraries that have been used for this project. All of these libraries can be installed with basic 'pip' commands.
+Library Dependencies:
+
+1. numpy
+2. pandas
+3. skimage
+4. openCV (cv2)
+5. keras
+6. matplotlib -pyplot
+7. pathlib
+8. h5py
+9. os
+10. scikitlearn
+11. scipy
+
