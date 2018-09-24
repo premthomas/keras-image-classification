@@ -79,5 +79,5 @@ What if we put further constraints (like size) and used images from Google? Whil
 ## Citations, Credits, Sources, and References
 Filckr27 - Y. Kalantidis, LG. Pueyo, M. Trevisiol, R. van Zwol, Y. Avrithis. Scalable Triangulation-based Logo Recognition. In Proceedings of ACM International Conference on Multimedia Retrieval (ICMR 2011), Trento, Italy, April 2011.
 
-## About the author  
-My name is Prem, and I am currently working as a freelance consultant specializing in SAP-ABAP and Android. I have a total of 14 years of experience and have just concluded a course in Machine Learning. My primary focus is on Image Classification using Keras and Tensorflow. The learning I garner is generally task oriented. My colleagues on this project are Satyajit Nair and Vivek Krishnan.
+## About the author(s)  
+My name is Prem, and I am currently working as a freelance consultant specializing in SAP-ABAP and Android. I have a total of 14 years of experience and have just concluded a course in Machine Learning. My primary focus is on Image Classification using Keras and Tensorflow. The learning I garner is generally task oriented. My colleagues on this project are Satyajit Nair and Vivek V Krishnan.
