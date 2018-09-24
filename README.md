@@ -123,4 +123,4 @@ Understanding regularization for image classification and machine learning: http
 regularization-for-image-classification-and-machine-learning/ - - Adrian Rosebrock September 2016
 
 ## About the author(s)  
-My name is Prem, and I am currently working as a freelance consultant specializing in SAP-ABAP and Android. I have a total of 14 years of experience and have just concluded a course in Machine Learning. My primary focus is on Image Classification using Keras and Tensorflow. The learning I garner is generally task oriented. My colleagues on this project are Satyajit Nair and Vivek V Krishnan.
+My name is Prem, and I am currently working as a freelance consultant specializing in SAP-ABAP and Android. I have a total of 14 years of experience and have just concluded a course in Machine Learning. My primary focus is on Image Classification using Keras and Tensorflow. The learning I garner is generally task oriented. My colleagues on this project are Satyajit Nair and Vivek V Krishnan (https://github.com/vvkishere).
