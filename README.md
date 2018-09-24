@@ -20,9 +20,11 @@ At the outset, let me remind you that we had three months to complete this proje
 
 There are two kinds of Classifiers that exist. The Binary classifier (like Dog vs. Cat) and the Multi-class classifier. To understand if our algorithm works correctly, we will have to use 3 or more classes. We start with three for our understanding, and check to see how we can subsequently increase the number of classes. The rules of Flickr27 state that each picture will contain only one of the 27 logos which have been categorised. Hence our code will evaluate the whole image at once and will categorise it as one of the three chosen classes. We currently do not intend on training a background class which acts as a fail-safe (should the logo detected not be in one of the three classes we have trained it for). Thinking about it in the most basic way, 3 classes would mean that if the model was to take a random guess, the prediction would be right 33.3% of the time. Any increase from here suggests that the model is learning and as the number continually gets higher, it would be difficult to improve on it. 
 
-In terms of data, our understanding is that the more we have, the more accurate our prediction will be. In keeping with our objectives, we will be using the Flickr27 dataset. Regarding the algorithm that we intend on using, we will be testing CNNs (Convolutional Neural Networks). Our intention is to test smaller custom architectures and then move to larger ones with the understanding being that smaller networks would take lesser time to train.
+Getting the GPU to work was one of our bigger hurdles. Initially, we trained our models using only the system CPU. With the initial set of 3 brand classes and the dataset with augmented images (See: "How small is too small?" section), each training of just 20 epochs, took us over 12 hours to run for a single experiment. After pouring through a large number of blog posts, we finally got our GPU's working and it gave us an approximate improvement of 10X with respect to  the training time for each experiment. However, the key constraint we encountered with the GPU was the memory which limited the number of classes we could train on. 
 
-Getting the GPU to work was one of our bigger hurdles. Based on the augmentation and the number of classes, we ran training scenarios for 20 epochs which took us over 12 hours. Only after going through a large number of blog posts, did we finally get our GPU's working and it did give us a minimum of 10 times the improvement. However, one disadvantage is that the memory limitation in the GPU did not allow us to use more classes. 
+Regarding the algorithm that we intend on using, we will be testing CNNs (Convolutional Neural Networks). Our intention is to test smaller custom architectures and then move to larger ones with the understanding being that smaller networks would take lesser time to train. While our code uses a modified version of the InceptionNet v3 Architecture, we experimented with others as well and settled for the one with the best performance.
+
+In terms of data, the common understanding is that the more we have, the more accurate our prediction will be. In keeping with our objectives, we will be limiting ourselves to using the images provided in Flickr27 dataset exclusively and trying to get the best possible performance out of the model.
 
 ### How small is too small?
 25 to 30 images is just too small to train any model. The loss function immediately takes a nose dive and the training platueas. Sources state that we will need at least 1000 images per class to allow for a valid impact on our training and tests. Augmentation is the answer to this. We augment each image with a set of rules, thereby creating similar images with some noise or changes to it. As far as possible, we will have to imitate real-world scenarios and therefore understand that certain augmentations are just out of scope.
@@ -68,6 +70,8 @@ The following are the list of Python Libraries that have been used for this proj
 10. scikitlearn
 11. scipy
 
+NOTE: It is highly recommended that you install these libraries within your environment before you run the code files mentioned in section 7. Some of these may already be available with your current python distribution.
+
 ## 7. Basic code files
 Here is a list of the code files that were used and their functions:
   - CreateModel.ipynb: Your first step is to create a model. There are two ways of creating models. You could import a model programmed in Keras directly (read this link for information on available models https://keras.io/applications/) or you could create your own model. In this case, we will be creating our own model using InceptionV3 as the base. The reason in doing so is that most models work with RGB images only and not with Grey-scale. There are a few variables that you will have to change:
@@ -81,9 +85,7 @@ Here is a list of the code files that were used and their functions:
 ## 8. Conclusion
 With a 99.97% training, 98.33% validation, and a 86.66% test, this algorithm does show it is possible to create a highly accurate model with less data. 
 
-What about testing with images taken from a camera? Would it work then? The answer is no. The results were very poor. No matter how well we controlled the method of taking an image for image classification, it almost always got it wrong. The score in this case dropped at a little less than 60%. 
-
-What if we put further constraints (like size) and used images from Google? While this did work better than images from real-life, it did not prove to be as accurate as that of the images that were present in Flickr27 and did not come close to the accuracies that were presented. To reiterate, the testing we conducted was small and it might be possible that the accuracies would have increased if we tested with a lot more images. 
+Point of note here: The development of this model was for a very specific use case and may not work on all instances of the brand logo. We have found reasonable success during our tests in a very specific and controlled source of new data to test the predictions on. We cannot guarantee that we will get the same levels of accuracies on all intances of the logo in new scenarios.
 
 ## 9. What changes would I make?
   1. Find a way to compare images and get a score of the similarity between them. This way we remove duplicates from our train and test sets, thus reducing the training time
