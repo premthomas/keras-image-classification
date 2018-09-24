@@ -47,13 +47,28 @@ Laptop with:
  
 This is close to the minimum requirements necessary to run a small scale image calssification project. Standard requirements would include:
   - Intel Core i7
-  - NVIDIA GTX series
+  - NVIDIA GTX 970
   - 16 GB DDR4 Memory and 
   - 1 TB HDD
   
 I would recommend that you look at Siraj's video that was posted on June 2018. Best Laptop for Machine Learning (https://www.youtube.com/watch?v=dtFZrFKMiPI). And yes, I would highly recommend other videos on Machine Learning posted by Siraj. 
   
-## 6. Basic code files
+## 6. Libraries used
+The following are the list of Python Libraries that have been used for this project. All of these libraries can be installed with basic 'pip' commands.
+
+1. numpy
+2. pandas
+3. skimage
+4. openCV (cv2)
+5. keras
+6. matplotlib -pyplot
+7. pathlib
+8. h5py
+9. os
+10. scikitlearn
+11. scipy
+
+## 7. Basic code files
 Here is a list of the code files that were used and their functions:
   - CreateModel.ipynb: Your first step is to create a model. There are two ways of creating models. You could import a model programmed in Keras directly (read this link for information on available models https://keras.io/applications/) or you could create your own model. In this case, we will be creating our own model using InceptionV3 as the base. The reason in doing so is that most models work with RGB images only and not with Grey-scale. There are a few variables that you will have to change:
     - Number of channels the image has: 1 represents a Grey-scale image, 3 represents a RGB (or HSV) image
@@ -63,14 +78,14 @@ Here is a list of the code files that were used and their functions:
   
   - TestModel.ipynb: Finally, we use the trained model (with weights) and predicted classes for the images that we have in our validation set. The results are not as good as we expected. It was 13 correct predictions out of the 15 available, and this translated to 86.6% accuracy.  However, this can be due to the number of images available for testing being very low.
   
-## 7. Conclusion
+## 8. Conclusion
 With a 99.97% training, 98.33% validation, and a 86.66% test, this algorithm does show it is possible to create a highly accurate model with less data. 
 
 What about testing with images taken from a camera? Would it work then? The answer is no. The results were very poor. No matter how well we controlled the method of taking an image for image classification, it almost always got it wrong. The score in this case dropped at a little less than 60%. 
 
 What if we put further constraints (like size) and used images from Google? While this did work better than images from real-life, it did not prove to be as accurate as that of the images that were present in Flickr27 and did not come close to the accuracies that were presented. To reiterate, the testing we conducted was small and it might be possible that the accuracies would have increased if we tested with a lot more images. 
 
-## 8. What changes would I make?
+## 9. What changes would I make?
   1. Find a way to compare images and get a score of the similarity between them. This way we remove duplicates from our train and test sets, thus reducing the training time
   2. Change the algorithm to use RGB images instead of Grey-scale images as most experts suggest that we will lose details that are important when converting the images from RGB to Grey-scale
   3. Find a method of checking what is being detected in the image that is used for prediction. This will help us understand the reasons behind why the classification could possible go wrong
@@ -78,6 +93,34 @@ What if we put further constraints (like size) and used images from Google? Whil
 
 ## Citations, Credits, Sources, and References
 Filckr27 - Y. Kalantidis, LG. Pueyo, M. Trevisiol, R. van Zwol, Y. Avrithis. Scalable Triangulation-based Logo Recognition. In Proceedings of ACM International Conference on Multimedia Retrieval (ICMR 2011), Trento, Italy, April 2011.
+
+Design Guide for CNN: https://hackernoon.com/a-comprehensive-design-guide-for-image-classification-cnns-46091260fb92 - George Seif
+April 2018
+
+Inception Net Design: https://arxiv.org/pdf/1512.00567v3.pdf - Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens,
+Zbigniew Wojna December 2015
+
+Scene Classification with Inception-7: http://lsun.cs.princeton.edu/slides/Christian.pdf - Christian Szegedy, Vincent Vanhoucke, Julian
+Ibarz
+
+Understanding how image quality affects Deep neural networks: https://arxiv.org/pdf/1604.04004.pdf - Samuel Dodge, Lina Karam April
+2016
+
+Benchmarks for popular CNN models: https://github.com/jcjohnson/cnn-benchmarks - Justin Johnson
+
+Tutorials on CNN: http://ufldl.stanford.edu/tutorial/supervised/ConvolutionalNeuralNetwork/ - Stanford Education
+
+Why do deep convolutional networks generalize so poorly to small image transformations?: https://arxiv.org/pdf/1805.12177.pdf - Aharon
+Azulay, Yair Weiss May 2018
+
+How to Resize, Pad Image to Square Shape and Keep Its Aspect Ratio With Python: https://jdhao.github.io/2017/11/06/resize-image-to-
+square-with-padding/ - Jiedong Hao November 2017
+
+Rotate images (correctly) with OpenCV and Python: https://www.pyimagesearch.com/2017/01/02/rotate-images-correctly-with-opencv-
+and-python/ - Adrian Rosebrock January 2017
+
+Understanding regularization for image classification and machine learning: https://www.pyimagesearch.com/2016/09/19/understanding-
+regularization-for-image-classification-and-machine-learning/ - - Adrian Rosebrock September 2016
 
 ## About the author(s)  
 My name is Prem, and I am currently working as a freelance consultant specializing in SAP-ABAP and Android. I have a total of 14 years of experience and have just concluded a course in Machine Learning. My primary focus is on Image Classification using Keras and Tensorflow. The learning I garner is generally task oriented. My colleagues on this project are Satyajit Nair and Vivek V Krishnan.
